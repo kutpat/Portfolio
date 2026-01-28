@@ -1,0 +1,38 @@
+---
+import "../styles/global.css";
+const { title = "Portfolio", description = "Portfolio website" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+
+    <!-- Prevent theme flash -->
+    <script is:inline>
+      (() => {
+        try {
+          const stored = localStorage.getItem("theme");
+          const systemDark = window.matchMedia?.("(prefers-color-scheme: dark)")?.matches;
+          const useDark = stored ? stored === "dark" : !!systemDark;
+          if (useDark) document.documentElement.classList.add("dark");
+        } catch {}
+      })();
+    </script>
+  </head>
+
+  <body class="min-h-screen antialiased">
+    <!-- premium background -->
+    <div class="pointer-events-none fixed inset-0 -z-10">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(99,102,241,0.20),transparent_38%),radial-gradient(circle_at_80%_20%,rgba(34,211,238,0.18),transparent_40%),radial-gradient(circle_at_50%_100%,rgba(244,244,245,0.35),transparent_45%)] dark:bg-[radial-gradient(circle_at_20%_10%,rgba(99,102,241,0.18),transparent_40%),radial-gradient(circle_at_80%_20%,rgba(34,211,238,0.14),transparent_45%),radial-gradient(circle_at_50%_110%,rgba(24,24,27,0.6),transparent_45%)]"></div>
+      <div class="absolute inset-0 opacity-[0.25] [background-image:radial-gradient(rgba(24,24,27,0.15)_1px,transparent_0)] [background-size:22px_22px] dark:opacity-[0.18]"></div>
+    </div>
+
+    <main class="wrap py-10">
+      <slot />
+    </main>
+  </body>
+</html>

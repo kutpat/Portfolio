@@ -1,17 +1,289 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { profile, education, skills, projects, experience, interests } from "../data/profile";
 
+const year = new Date().getFullYear();
+const featured = projects.slice(0, 3);
+const moreProjects = projects.slice(3);
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+  title={`${profile.name} — Portfolio`}
+>
+  <!-- Glass Header -->
+  <header class="sticky top-0 z-20 -mx-6 mb-10 border-b border-zinc-200/70 bg-white/60 px-6 py-4 backdrop-blur
+               dark:border-zinc-800/80 dark:bg-zinc-950/80">
+    <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+      <div class="leading-tight">
+  <div class="text-sm font-medium text-zinc-600 dark:text-zinc-300">{profile.location}</div>
+  <div class="font-semibold tracking-tight text-zinc-900 dark:text-white">{profile.name}</div>
+</div>
+
+
+      <div class="flex flex-wrap items-center gap-2">
+        <nav class="flex flex-wrap items-center gap-3 text-sm text-zinc-700 dark:text-zinc-200">
+          <a class="hover:text-zinc-900 dark:hover:text-white" href="#projects">Projects</a>
+          <a class="hover:text-zinc-900 dark:hover:text-white" href="#skills">Skills</a>
+          <a class="hover:text-zinc-900 dark:hover:text-white" href="#experience">Experience</a>
+          <a class="hover:text-zinc-900 dark:hover:text-white" href="#education">Education</a>
+          <a class="hover:text-zinc-900 dark:hover:text-white" href="#contact">Contact</a>
+        </nav>
+
+        <button
+  id="themeToggle"
+  class="btn-ghost text-zinc-700 dark:text-zinc-200 dark:border-zinc-700/80"
+  aria-label="Toggle theme"
+  type="button"
+>
+  Theme
+</button>
+
+      </div>
+    </div>
+  </header>
+
+  <script is:inline>
+    (() => {
+      const btn = document.getElementById("themeToggle");
+      if (!btn) return;
+
+      btn.addEventListener("click", () => {
+        const root = document.documentElement;
+        const isDark = root.classList.toggle("dark");
+        try { localStorage.setItem("theme", isDark ? "dark" : "light"); } catch {}
+      });
+    })();
+  </script>
+
+  <!-- HERO -->
+  <section class="card relative overflow-hidden p-8">
+    <div class="absolute inset-0 -z-10 opacity-70">
+      <div class="absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-indigo-500/15 blur-3xl"></div>
+      <div class="absolute -bottom-24 right-0 h-72 w-72 rounded-full bg-cyan-400/15 blur-3xl"></div>
+    </div>
+
+    <div class="grid gap-8 lg:grid-cols-3">
+      <div class="lg:col-span-2">
+        <p class="kicker">{profile.headline}</p>
+        <h1 class="h1 mt-2">
+          I build <span class="underline decoration-indigo-300/80 underline-offset-4">robust</span> backend & ML systems that ship.
+        </h1>
+
+        <p class="p mt-4 max-w-2xl">{profile.summary}</p>
+
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a class="btn-primary" href="/cv.pdf" target="_blank" rel="noreferrer">Download CV</a>
+          <a class="btn-ghost" href={`mailto:${profile.email}`}>Contact</a>
+          <a class="btn-ghost" href={profile.links.github} target="_blank" rel="noreferrer">GitHub</a>
+          {profile.links.linkedin?.trim() && (
+  <a class="btn-ghost" href={profile.links.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
+)}
+        </div>
+
+        <div class="mt-6 flex flex-wrap gap-2">
+          <span class="chip">{profile.title}</span>
+          <span class="chip">Open to Working Student roles</span>
+          <span class="chip">Backend · Cloud · Data/AI · Security</span>
+        </div>
+      </div>
+
+      <!-- Highlights / Proof -->
+      <div class="grid gap-3">
+        <div class="card p-4">
+          <div class="kicker">Proof</div>
+          <div class="mt-1 text-lg font-semibold">~90k-user ops pipeline</div>
+          <div class="mt-1 text-sm text-muted">
+            Structured event logging exported to process mining.
+          </div>
+        </div>
+
+        <div class="card p-4">
+          <div class="kicker">Strength</div>
+          <div class="mt-1 text-lg font-semibold">Time-series ML pipelines</div>
+          <div class="mt-1 text-sm text-muted">
+            Walk-forward evaluation, feature engineering, calibration mindset.
+          </div>
+        </div>
+
+        <div class="card p-4">
+          <div class="kicker">Engineering</div>
+          <div class="mt-1 text-lg font-semibold">Embedded C / low-level</div>
+          <div class="mt-1 text-sm text-muted">
+            Interrupts, timers, schedulers, register-level I/O.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="section">
+    <div class="section-head">
+      <h2 class="h2">Featured Projects</h2>
+      <a class="text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white" href="#all-projects">
+        All projects ↓
+      </a>
+    </div>
+    <div class="divider"></div>
+
+    <div class="mt-6 grid gap-4 lg:grid-cols-3">
+      {featured.map((p) => (
+        <article class="card card-hover p-5">
+          <h3 class="text-lg font-semibold tracking-tight">{p.name}</h3>
+          <p class="mt-1 text-sm text-muted">{p.oneLiner}</p>
+
+          <ul class="mt-4 list-disc space-y-1 pl-5 text-[15px] text-body">
+            {p.bullets.slice(0, 3).map((b) => <li>{b}</li>)}
+          </ul>
+
+          <div class="mt-4 flex flex-wrap gap-2">
+            {p.tech.slice(0, 6).map((t) => <span class="chip">{t}</span>)}
+          </div>
+
+          <div class="mt-5 flex flex-wrap gap-2">
+            {p.links?.repo && p.links.repo.length > 0 && (
+              <a class="btn-ghost" href={p.links.repo} target="_blank" rel="noreferrer">Repo</a>
+            )}
+            {p.links?.demo && p.links.demo.length > 0 && (
+              <a class="btn-ghost" href={p.links.demo} target="_blank" rel="noreferrer">Demo</a>
+            )}
+            {(!p.links?.repo || p.links.repo.length === 0) && (!p.links?.demo || p.links.demo.length === 0) && (
+              <span class="text-sm text-muted">Private repo — details on request</span>
+            )}
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <div id="all-projects" class="mt-10">
+      <div class="section-head">
+        <h3 class="h2">All Projects</h3>
+      </div>
+      <div class="divider"></div>
+
+      <div class="mt-6 grid gap-4">
+        {moreProjects.map((p) => (
+          <article class="card p-5">
+            <div class="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+              <div>
+                <h4 class="text-base font-semibold tracking-tight">{p.name}</h4>
+                <p class="mt-1 text-sm text-muted">{p.oneLiner}</p>
+              </div>
+            </div>
+
+            <div class="mt-3 flex flex-wrap gap-2">
+              {p.tech.slice(0, 10).map((t) => <span class="chip">{t}</span>)}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="section">
+    <div class="section-head">
+      <h2 class="h2">Skills</h2>
+    </div>
+    <div class="divider"></div>
+
+    <div class="mt-6 grid gap-4 sm:grid-cols-2">
+      {Object.entries(skills).map(([group, items]) => (
+        <div class="card p-5">
+          <div class="text-sm font-medium text-muted">{group}</div>
+          <div class="mt-3 flex flex-wrap gap-2">
+            {items.map((s) => <span class="chip">{s}</span>)}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- EXPERIENCE (Timeline) -->
+  <section id="experience" class="section">
+    <div class="section-head">
+      <h2 class="h2">Experience</h2>
+    </div>
+    <div class="divider"></div>
+
+    <div class="mt-6 space-y-6">
+      {experience.map((e) => (
+        <article class="relative pl-8">
+          <!-- timeline line -->
+          <div class="absolute left-0 top-2 h-full w-px bg-zinc-300/90 dark:bg-zinc-700/70"></div>
+          <!-- dot -->
+          <div class="absolute left-[-6px] top-2 h-3.5 w-3.5 rounded-full bg-gradient-to-r from-indigo-500 to-cyan-400 shadow-sm shadow-cyan-400/20"></div>
+
+          <div class="card card-hover p-5">
+            <h3 class="text-lg font-semibold tracking-tight">{e.role}</h3>
+            <p class="mt-1 text-sm text-muted">{e.org}</p>
+
+            <ul class="mt-4 list-disc space-y-1 pl-5 text-[15px] text-body">
+              {e.bullets.map((b) => <li>{b}</li>)}
+            </ul>
+
+            <div class="mt-4 flex flex-wrap gap-2">
+              {e.tech.map((t) => <span class="chip">{t}</span>)}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education" class="section">
+    <div class="section-head">
+      <h2 class="h2">Education</h2>
+    </div>
+    <div class="divider"></div>
+
+    <div class="mt-6 grid gap-4">
+      {education.map((ed) => (
+        <article class="card p-5">
+          <h3 class="text-lg font-semibold tracking-tight">{ed.degree}</h3>
+          <p class="mt-1 text-body">{ed.school}</p>
+          <p class="mt-1 text-sm text-muted">{ed.meta}</p>
+
+          <ul class="mt-4 list-disc space-y-1 pl-5 text-[15px] text-body">
+            {ed.bullets.map((b) => <li>{b}</li>)}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- INTERESTS -->
+  <section class="section">
+    <div class="section-head">
+      <h2 class="h2">Research Interests</h2>
+    </div>
+    <div class="divider"></div>
+
+    <div class="mt-6 flex flex-wrap gap-2">
+      {interests.map((i) => <span class="chip">{i}</span>)}
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="section-head">
+      <h2 class="h2">Contact</h2>
+    </div>
+    <div class="divider"></div>
+
+    <div class="mt-6 card p-5">
+      <p class="text-body">
+        Fastest way to reach me:
+        <a class="font-medium underline underline-offset-4" href={`mailto:${profile.email}`}>{profile.email}</a>
+      </p>
+      <p class="mt-2 text-sm text-muted">
+        If you want, I can also share private repos and architecture notes on request.
+      </p>
+    </div>
+  </section>
+
+  <footer class="mt-14 border-t pt-6 text-sm text-muted">
+    <p>© {year} {profile.name}</p>
+  </footer>
+</BaseLayout>

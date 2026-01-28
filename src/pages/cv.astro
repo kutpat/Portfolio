@@ -1,0 +1,22 @@
+---
+// src/pages/cv.astro
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="CV — Taylan Kutbay" description="Curriculum Vitae">
+  <div class="flex items-center justify-between gap-4">
+    <h1 class="text-2xl font-semibold tracking-tight">Curriculum Vitae</h1>
+    <a
+      class="inline-flex items-center rounded-lg bg-zinc-900 px-4 py-2 text-sm font-medium text-white hover:bg-zinc-800"
+      href="/cv.pdf"
+      target="_blank"
+      rel="noreferrer"
+    >
+      Download PDF
+    </a>
+  </div>
+
+  <div class="mt-6 overflow-hidden rounded-2xl border bg-white">
+    <iframe title="CV" src="/cv.pdf" class="h-[80vh] w-full"></iframe>
+  </div>
+</BaseLayout>
