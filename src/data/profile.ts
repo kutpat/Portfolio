@@ -48,6 +48,7 @@ export const skills: Record<string, string[]> = {
 export const projects = [
   {
     name: "Temporal Fusion Transformer for Financial Time Series Prediction",
+    period: "2025",
     oneLiner: "Multi-horizon classification of market regimes with an end-to-end time series pipeline.",
     bullets: [
       "Designed end-to-end ML pipeline for time series modeling",
@@ -59,6 +60,7 @@ export const projects = [
   },
   {
     name: "Axion Discord Bot (Community Management & Operations)",
+    period: "2021–present",
     oneLiner: "Scalable operations tooling for a crypto trading community.",
     bullets: [
       "Implemented subscription + payment handling",
@@ -70,6 +72,7 @@ export const projects = [
   },
   {
     name: "Event Logging & Process Mining Pipeline for Discord Operations",
+    period: "2025",
     oneLiner: "Event tracking and structured logs exported to Celonis for process mining (~90k users).",
     bullets: [
       "Tracked fine-grained events: subscriptions, ticket lifecycles, moderation, analyst activity",
@@ -81,6 +84,7 @@ export const projects = [
   },
   {
     name: "Bio-inspired SNN for Bird vs. Drone Classification",
+    period: "2025",
     oneLiner: "Energy-efficient event-based classification using SNN + Ant Colony Optimization.",
     bullets: [
       "Combined Spiking Neural Networks with Ant Colony Optimization for feature selection",
@@ -91,6 +95,7 @@ export const projects = [
   },
 {
   name: "SabrBot — Bybit Trading Framework",
+  period: "2024-present",
   oneLiner: "Event-driven Python framework using Bybit WebSockets for real-time market + account data.",
   bullets: [
     "Maintains live internal state (orders, positions, balances) from private and public WebSocket streams",
@@ -102,6 +107,7 @@ export const projects = [
 },
   {
     name: "Signal Classificator (Discord-based Trading Signal Extraction)",
+    period: "2025",
     oneLiner: "Extracted structured trading signals from unstructured analyst messages.",
     bullets: [
       "Parsed free-text to detect symbols, direction, entries, targets, updates",
@@ -112,6 +118,7 @@ export const projects = [
   },
   {
     name: "Multi-Agent Sokoban Simulation",
+    period: "2025",
     oneLiner: "Cooperative multi-agent problem-solving in a constrained environment.",
     bullets: [
       "Designed autonomous agents with distributed decision-making",
@@ -122,6 +129,7 @@ export const projects = [
   },
 {
   name: "BLL — Digital Helpers for Classroom Management",
+  period: "2022–2023",
   oneLiner: "Desktop tooling for teachers: classroom management workflows with a seat-plan generator and GUI.",
   bullets: [
     "Built a desktop application to support teachers with structured classroom workflows",
