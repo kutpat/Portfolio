@@ -5,7 +5,7 @@ export const profile = {
   email: "taylan.kutbay@rwth-aachen.de",
   headline: "B.Sc. Computer Science Student @ RWTH Aachen",
   summary:
-    "Computer Science student with hands-on experience in time series ML pipelines, Discord-based operational systems, and embedded C. Interested in robust ML for time-dependent data and AI security.",
+    "Computer Science student with hands-on experience in time series ML pipelines, Discord-based operational systems, and embedded C. Interested in Cloud Architectures, robust ML for time-dependent data and AI security.",
   links: {
   github: "https://github.com/kutpat",
   linkedin: "",
