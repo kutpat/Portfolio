@@ -3,9 +3,9 @@ export const profile = {
   title: "B.Sc. Computer Science @ RWTH Aachen University",
   location: "Cologne, Germany",
   email: "taylan.kutbay@rwth-aachen.de",
-  headline: "B.Sc. Computer Science Student @ RWTH Aachen",
+  headline: "B.Sc. Computer Science @ RWTH Aachen · AI SRE Working Student @ ilert",
   summary:
-    "Computer Science student with hands-on experience in time series ML pipelines, Discord-based operational systems, and embedded C. Interested in Cloud Architectures, robust ML for time-dependent data and AI security.",
+    "Computer Science student building AI agents for incident response at ilert. Hands-on experience in time series ML pipelines, Discord-based operational systems, and embedded C. Interested in Cloud Architectures, robust ML for time-dependent data and AI security.",
   links: {
   github: "https://github.com/kutpat",
   linkedin: "",
@@ -38,6 +38,7 @@ export const skills: Record<string, string[]> = {
     "Model evaluation",
     "Multi-horizon classification",
   ],
+  "AI Engineering": ["LLM APIs", "AI agents", "RAG", "Prompt orchestration", "MCP", "A2A / A2UI", "Evals / LLM-as-judge"],
   "Data Engineering": ["Time series processing", "Labeling pipelines", "Data quality validation"],
   "Distributed Systems": ["Basic networking", "Client–server models", "Communication protocols"],
   "Tools & Frameworks": ["PyTorch", "NumPy", "Pandas", "Git", "Linux", "Jupyter Notebook"],
@@ -143,6 +144,20 @@ export const projects = [
 ];
 
 export const experience = [
+  {
+    role: "AI SRE Engineer",
+    org: "ilert · Working Student",
+    period: "Mar 2026 – Present",
+    current: true,
+    oneLiner: "Building AI agents for incident response on an on-call & alerting platform.",
+    bullets: [
+      "Build AI agents for incident response — Root Cause Investigator agents, chat agents, and automated incident summaries & postmortems",
+      "Build AI agents across a TypeScript, Rust and Java stack, with agent interop over A2A / A2UI protocols",
+      "Work with LLM APIs, RAG over operational data, and prompt orchestration; reliability backed by evals / LLM-as-judge",
+      "Develop ilert's internal MCP server, exposing operational tooling & data to the AI agents",
+    ],
+    tech: ["Rust / Rig", "TypeScript", "Java", "MCP", "A2A / A2UI", "LLM APIs", "RAG", "Evals / LLM-as-judge", "Grafana"],
+  },
   {
     role: "Systems Programming Internship — Embedded Operating System in C",
     org: "RWTH Aachen University",
