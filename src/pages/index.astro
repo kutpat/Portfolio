@@ -15,18 +15,41 @@ const timelineExperience = [current, ...pastExperience];
   title={`${profile.name} — Portfolio`}
 >
   <!-- Glass Header -->
-  <header class="sticky top-0 z-20 -mx-6 mb-10 border-b border-zinc-200/70 bg-white/60 px-6 py-4 backdrop-blur
-               dark:border-zinc-800/80 dark:bg-zinc-950/80">
-    <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-      <div class="leading-tight">
-  <div class="text-sm font-medium text-zinc-600 dark:text-zinc-300">{profile.location}</div>
-  <div class="font-semibold tracking-tight text-zinc-900 dark:text-white">{profile.name}</div>
-</div>
+  <header class="sticky top-0 z-20 -mx-6 mb-10 border-b border-zinc-200/70 bg-white/75 px-6 py-4 backdrop-blur
+               dark:border-zinc-900 dark:bg-black">
+    <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <div class="flex items-center justify-between gap-4 sm:block">
+        <div class="leading-tight">
+          <div class="text-sm font-medium text-zinc-600 dark:text-zinc-300">{profile.location}</div>
+          <div class="font-semibold tracking-tight text-zinc-900 dark:text-white">{profile.name}</div>
+        </div>
 
+        <button
+          class="btn-ghost h-10 w-10 shrink-0 p-0 text-zinc-700 sm:hidden dark:border-zinc-700/80 dark:text-zinc-200"
+          aria-label="Toggle theme"
+          title="Toggle theme"
+          type="button"
+          data-theme-toggle
+        >
+          <svg class="h-4 w-4 dark:hidden" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.985 12.486A9 9 0 1 1 11.514 3.015 7 7 0 0 0 20.985 12.486Z"></path>
+          </svg>
+          <svg class="hidden h-4 w-4 dark:block" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2"></path>
+            <path d="M12 20v2"></path>
+            <path d="m4.93 4.93 1.41 1.41"></path>
+            <path d="m17.66 17.66 1.41 1.41"></path>
+            <path d="M2 12h2"></path>
+            <path d="M20 12h2"></path>
+            <path d="m6.34 17.66-1.41 1.41"></path>
+            <path d="m19.07 4.93-1.41 1.41"></path>
+          </svg>
+        </button>
+      </div>
 
-      <div class="flex flex-wrap items-center gap-2">
-        <nav class="flex flex-wrap items-center gap-3 text-sm text-zinc-700 dark:text-zinc-200">
-          <a class="hover:text-zinc-900 dark:hover:text-white" href="#currently">Now</a>
+      <div class="flex flex-wrap items-center gap-4">
+        <nav class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-zinc-700 sm:gap-x-6 dark:text-zinc-200">
           <a class="hover:text-zinc-900 dark:hover:text-white" href="#projects">Projects</a>
           <a class="hover:text-zinc-900 dark:hover:text-white" href="#skills">Skills</a>
           <a class="hover:text-zinc-900 dark:hover:text-white" href="#experience">Experience</a>
@@ -35,13 +58,27 @@ const timelineExperience = [current, ...pastExperience];
         </nav>
 
         <button
-  id="themeToggle"
-  class="btn-ghost text-zinc-700 dark:text-zinc-200 dark:border-zinc-700/80"
-  aria-label="Toggle theme"
-  type="button"
->
-  Theme
-</button>
+          class="btn-ghost hidden h-10 w-10 shrink-0 p-0 text-zinc-700 sm:inline-flex dark:border-zinc-700/80 dark:text-zinc-200"
+          aria-label="Toggle theme"
+          title="Toggle theme"
+          type="button"
+          data-theme-toggle
+        >
+          <svg class="h-4 w-4 dark:hidden" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.985 12.486A9 9 0 1 1 11.514 3.015 7 7 0 0 0 20.985 12.486Z"></path>
+          </svg>
+          <svg class="hidden h-4 w-4 dark:block" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2"></path>
+            <path d="M12 20v2"></path>
+            <path d="m4.93 4.93 1.41 1.41"></path>
+            <path d="m17.66 17.66 1.41 1.41"></path>
+            <path d="M2 12h2"></path>
+            <path d="M20 12h2"></path>
+            <path d="m6.34 17.66-1.41 1.41"></path>
+            <path d="m19.07 4.93-1.41 1.41"></path>
+          </svg>
+        </button>
 
       </div>
     </div>
@@ -49,14 +86,16 @@ const timelineExperience = [current, ...pastExperience];
 
   <script is:inline>
     (() => {
-      const btn = document.getElementById("themeToggle");
-      if (!btn) return;
+      const buttons = document.querySelectorAll("[data-theme-toggle]");
+      if (buttons.length === 0) return;
 
-      btn.addEventListener("click", () => {
+      const toggleTheme = () => {
         const root = document.documentElement;
         const isDark = root.classList.toggle("dark");
         try { localStorage.setItem("theme", isDark ? "dark" : "light"); } catch {}
-      });
+      };
+
+      buttons.forEach((btn) => btn.addEventListener("click", toggleTheme));
     })();
   </script>
 
