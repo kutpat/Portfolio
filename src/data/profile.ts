@@ -40,7 +40,7 @@ export const skills: Record<string, string[]> = {
   ],
   "AI Engineering": ["LLM APIs", "AI agents", "RAG", "Prompt orchestration", "MCP", "A2A / A2UI", "Evals / LLM-as-judge"],
   "Data Engineering": ["Time series processing", "Labeling pipelines", "Data quality validation"],
-  "Distributed Systems": ["Basic networking", "Client–server models", "Communication protocols"],
+  "Distributed Systems": ["Basic networking", "Client-server models", "Communication protocols"],
   "Tools & Frameworks": ["PyTorch", "NumPy", "Pandas", "Git", "Linux", "Jupyter Notebook"],
   Databases: ["SQL", "NoSQL"],
   "Process Mining": ["Event log generation", "Celonis integration"],
@@ -61,7 +61,7 @@ export const projects = [
   },
   {
     name: "Axion Discord Bot (Community Management & Operations)",
-    period: "2021–present",
+    period: "2021-present",
     oneLiner: "Scalable operations tooling for a crypto trading community.",
     bullets: [
       "Implemented subscription + payment handling",
@@ -95,7 +95,7 @@ export const projects = [
     links: { repo: "https://github.com/kutpat/Bird_vs_Drone_AML_Project", demo: "" },
   },
 {
-  name: "SabrBot — Bybit Trading Framework",
+  name: "SabrBot - Bybit Trading Framework",
   period: "2024-present",
   oneLiner: "Event-driven Python framework using Bybit WebSockets for real-time market + account data.",
   bullets: [
@@ -129,8 +129,8 @@ export const projects = [
     links: { repo: "https://github.com/kutpat/sokoban-dmas-project", demo: "" },
   },
 {
-  name: "BLL — Digital Helpers for Classroom Management",
-  period: "2022–2023",
+  name: "BLL - Digital Helpers for Classroom Management",
+  period: "2022-2023",
   oneLiner: "Desktop tooling for teachers: classroom management workflows with a seat-plan generator and GUI.",
   bullets: [
     "Built a desktop application to support teachers with structured classroom workflows",
@@ -147,11 +147,11 @@ export const experience = [
   {
     role: "AI SRE Engineer",
     org: "ilert · Working Student",
-    period: "Mar 2026 – Present",
+    period: "Mar 2026 - Present",
     current: true,
     oneLiner: "Building AI agents for incident response on an on-call & alerting platform.",
     bullets: [
-      "Build AI agents for incident response — Root Cause Investigator agents, chat agents, and automated incident summaries & postmortems",
+      "Build AI agents for incident response - Root Cause Investigator agents, chat agents, and automated incident summaries & postmortems",
       "Build AI agents across a TypeScript, Rust and Java stack, with agent interop over A2A / A2UI protocols",
       "Work with LLM APIs, RAG over operational data, and prompt orchestration; reliability backed by evals / LLM-as-judge",
       "Develop ilert's internal MCP server, exposing operational tooling & data to the AI agents",
@@ -159,7 +159,7 @@ export const experience = [
     tech: ["Rust / Rig", "TypeScript", "Java", "MCP", "A2A / A2UI", "LLM APIs", "RAG", "Evals / LLM-as-judge", "Grafana"],
   },
   {
-    role: "Systems Programming Internship — Embedded Operating System in C",
+    role: "Systems Programming Internship - Embedded Operating System in C",
     org: "RWTH Aachen University",
     bullets: [
       "Built a minimal embedded OS running on an ATmega microcontroller",
@@ -169,7 +169,7 @@ export const experience = [
     tech: ["C", "Embedded", "Microcontroller", "Low-level I/O"],
   },
   {
-    role: "AI Text Adventure — Multi-Agent System Internship",
+    role: "AI Text Adventure - Multi-Agent System Internship",
     org: "RWTH Aachen University",
     bullets: [
       "Built an interactive AI-driven text adventure with coordinated agent behavior",
